@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "github.com/lostwisp/telegram-discord-bridge/pr"
+	pb "github.com/lostwisp/test-grpc-with-docker/pr"
 	"google.golang.org/grpc"
 )
 

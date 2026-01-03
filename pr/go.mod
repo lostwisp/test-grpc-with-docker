@@ -1,4 +1,4 @@
-module github.com/HamsterNiki/test-grpc-with-docker/pr
+module github.com/lostwisp/test-grpc-with-docker/pr
 
 go 1.25.1
 

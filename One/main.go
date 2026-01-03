@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "github.com/HamsterNiki/test-grpc-with-docker/one/generated"
+	pb "github.com/lostwisp/test-grpc-with-docker/pr"
 	"google.golang.org/grpc"
 	"time"
 )
