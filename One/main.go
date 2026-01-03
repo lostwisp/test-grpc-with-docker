@@ -2,10 +2,14 @@ package main
 
 import (
 	"fmt"
-	pb "github.com/HamsterNiki/test-grpc-with-docker/pr"
+	pb "github.com/HamsterNiki/test-grpc-with-docker/one/generated"
 	"google.golang.org/grpc"
 	"time"
 )
+
+type client struct {
+	pd
+}
 
 func main() {
 	for {

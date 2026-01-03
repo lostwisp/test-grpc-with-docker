@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package score;
 
-option go_package = "github.com/HamsterNiki/test-grpc-with-docker";
+option go_package = "github.com/lostwisp/telegram-discord-bridge";
 
 service score{
     rpc UpdScore (ScoreRequest) returns (ScoreResponse);
