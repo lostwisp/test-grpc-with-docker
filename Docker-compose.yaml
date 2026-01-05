@@ -1,12 +1,14 @@
 services:
-  onedocker:
-    build:
-      context: One
-      dockerfile: Dockerfile
-
   twodocker:
     build:
       context: Two
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - 50051:50051
+
+  onedocker:
+    build:
+      context: One
+      dockerfile: Dockerfile
+    ports:
+      - 50051:50051

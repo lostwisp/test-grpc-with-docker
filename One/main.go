@@ -1,19 +1,34 @@
 package main
 
 import (
-	"fmt"
+	"context"
+	"log"
+
 	pb "github.com/lostwisp/test-grpc-with-docker/pr"
 	"google.golang.org/grpc"
-	"time"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
-type client struct {
-	pd
-}
-
 func main() {
-	for {
-		fmt.Println("One working")
-		time.Sleep(2 * time.Second)
+	// Подключаемся к серверу (без TLS для примера)
+	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Failed to connect: %v", err)
 	}
+	defer conn.Close()
+
+	// Создаём клиента
+	client := pb.NewScoreClient(conn)
+
+	// Создаём запрос
+	req := &pb.ScoreRequest{Score: 42}
+
+	// Вызываем метод
+	resp, err := client.UpdScore(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Failed to call UpdScore: %v", err)
+	}
+
+	// Выводим ответ
+	log.Printf("Received response: score = %d", resp.Score) // Ожидаемо: 43
 }
