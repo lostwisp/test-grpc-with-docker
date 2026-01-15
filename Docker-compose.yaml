@@ -3,6 +3,7 @@ services:
     build:
       context: Two
       dockerfile: Dockerfile
+    network_mode: host
     ports:
       - 50051:50051
 
@@ -10,5 +11,6 @@ services:
     build:
       context: One
       dockerfile: Dockerfile
+    network_mode: host
     ports:
       - 50051:50051

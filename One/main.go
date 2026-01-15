@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"time"
 
 	pb "github.com/lostwisp/test-grpc-with-docker/pr"
 	"google.golang.org/grpc"
@@ -24,11 +25,15 @@ func main() {
 	req := &pb.ScoreRequest{Score: 42}
 
 	// Вызываем метод
-	resp, err := client.UpdScore(context.Background(), req)
-	if err != nil {
-		log.Fatalf("Failed to call UpdScore: %v", err)
-	}
+	for {
+		resp, err := client.UpdScore(context.Background(), req)
+		if err != nil {
+			log.Fatalf("Failed to call UpdScore: %v", err)
+		}
 
-	// Выводим ответ
-	log.Printf("Received response: score = %d", resp.Score) // Ожидаемо: 43
+		// Выводим ответ
+		log.Printf("Received response: score = %d", resp.Score) // Ожидаемо: 43
+		req = &pb.ScoreRequest{Score: resp.Score}
+		time.Sleep(1 * time.Second)
+	}
 }

@@ -20,6 +20,7 @@ func (s *server) UpdScore(ctx context.Context, req *pb.ScoreRequest) (*pb.ScoreR
 	newScore := req.Score + 1
 	fmt.Println(newScore)
 	log.Printf("Received score: %d, returning: %d", req.Score, newScore)
+
 	return &pb.ScoreResponse{Score: newScore}, nil
 }
 
